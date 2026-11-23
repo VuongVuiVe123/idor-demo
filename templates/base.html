@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% block title %}Cổng sinh viên{% endblock %}</title>
+<style>
+  :root { --bg:#f3f5f9; --card:#fff; --ink:#172033; --muted:#5d6b82; --line:#dfe4ec; --brand:#1d4ed8; }
+  * { box-sizing:border-box; }
+  body { margin:0; font:17px/1.55 system-ui, sans-serif; background:var(--bg); color:var(--ink); }
+  header { background:var(--brand); color:#fff; padding:.8rem 1.2rem; display:flex; gap:1rem; flex-wrap:wrap; align-items:center; }
+  header a { color:#fff; }
+  .brand { font-weight:700; font-size:1.1rem; margin-right:auto; text-decoration:none; }
+  .whoami { background:rgba(255,255,255,.15); padding:.25rem .7rem; border-radius:6px; }
+  main { max-width:860px; margin:1.5rem auto; padding:0 1rem; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:1.2rem 1.4rem; margin-bottom:1rem; }
+  h1,h2 { margin:.1rem 0 .7rem; }
+  table { width:100%; border-collapse:collapse; }
+  th,td { text-align:left; padding:.5rem .6rem; border-bottom:1px solid var(--line); }
+  th { color:var(--muted); font-size:.9rem; }
+  .muted { color:var(--muted); }
+  .pill { display:inline-block; padding:.15rem .6rem; border-radius:999px; font-size:.9rem; font-weight:600; }
+  .pill.yes { background:#dcfce7; color:#166534; } .pill.no { background:#f1f5f9; color:#475569; }
+  .flash { background:#fef9c3; border:1px solid #fde047; padding:.6rem .9rem; border-radius:8px; margin-bottom:1rem; }
+  label { display:block; font-weight:600; margin:.6rem 0 .25rem; }
+  input { font:inherit; padding:.5rem .7rem; border:1px solid var(--line); border-radius:8px; width:100%; }
+  button, .btn { font:inherit; background:var(--brand); color:#fff; border:0; border-radius:8px; padding:.55rem 1rem; cursor:pointer; text-decoration:none; display:inline-block; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:1rem; }
+  code { background:#eef2f7; padding:.05rem .35rem; border-radius:4px; }
+</style>
+</head>
+<body>
+<header>
+  <a class="brand" href="{{ url_for('index') }}">🎓 Cổng thông tin sinh viên</a>
+  {% if g.user %}
+    <span class="whoami">Đang đăng nhập: <b>{{ g.user.full_name }}</b> · MSSV {{ g.user.mssv }}</span>
+    <a href="{{ url_for('logout') }}">Đăng xuất</a>
+  {% endif %}
+</header>
+<main>
+  {% for m in get_flashed_messages() %}<div class="flash">{{ m }}</div>{% endfor %}
+  {% block content %}{% endblock %}
+</main>
+</body>
+</html>

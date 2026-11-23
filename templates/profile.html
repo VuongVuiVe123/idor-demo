@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Thông tin nhận học bổng{% endblock %}
+{% block content %}
+<div class="card" style="max-width:560px">
+  <h1>Thông tin nhận học bổng</h1>
+  <p><b>{{ owner.full_name }}</b> · MSSV {{ owner.mssv }}</p>
+  <form method="post">
+    <label for="phone">Số điện thoại</label>
+    <input id="phone" name="phone" value="{{ owner.phone }}" inputmode="numeric">
+    <label>Ngân hàng</label>
+    <input value="{{ owner.bank_name }}" disabled>
+    <label for="acct">Số tài khoản nhận học bổng</label>
+    <input id="acct" name="bank_account" value="{{ owner.bank_account }}" inputmode="numeric">
+    <p><button type="submit">Lưu thay đổi</button></p>
+  </form>
+</div>
+{% endblock %}

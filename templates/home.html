@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}Trang chủ{% endblock %}
+{% block content %}
+<div class="card">
+  <h1>Xin chào, {{ g.user.full_name }} 👋</h1>
+  <p class="muted">Học kỳ 1 · 2026–2027 · Lớp ATTT2023</p>
+</div>
+<div class="grid">
+  <div class="card">
+    <h2>📄 Bảng điểm</h2>
+    <p class="muted">Xem điểm các môn và điều kiện học bổng.</p>
+    <a class="btn" href="{{ url_for('grades', mssv=g.user.mssv) }}">Xem bảng điểm</a>
+  </div>
+  <div class="card">
+    <h2>🏦 Thông tin nhận học bổng</h2>
+    <p class="muted">Số điện thoại và tài khoản ngân hàng nhận học bổng.</p>
+    <a class="btn" href="{{ url_for('profile', mssv=g.user.mssv) }}">Cập nhật</a>
+  </div>
+</div>
+{% endblock %}

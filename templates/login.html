@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Đăng nhập{% endblock %}
+{% block content %}
+<div class="card" style="max-width:420px;margin:2rem auto">
+  <h2>Đăng nhập</h2>
+  {% if error %}<div class="flash">{{ error }}</div>{% endif %}
+  <form method="post">
+    <label for="u">Tên đăng nhập</label><input id="u" name="username" autocomplete="username">
+    <label for="p">Mật khẩu</label><input id="p" name="password" type="password" autocomplete="current-password">
+    <p><button type="submit">Đăng nhập</button></p>
+  </form>
+  <p class="muted">Tài khoản demo: <code>an / an123</code> · <code>binh / binh123</code></p>
+</div>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Bảng điểm{% endblock %}
+{% block content %}
+<div class="card">
+  <h1>Bảng điểm học kỳ 1</h1>
+  <p class="owner"><b>{{ owner.full_name }}</b> · MSSV {{ owner.mssv }}</p>
+  <table>
+    <tr><th>Môn học</th><th>Điểm</th></tr>
+    {% for r in rows %}<tr><td>{{ r.subject }}</td><td>{{ '%.1f' % r.score }}</td></tr>{% endfor %}
+    <tr><th>Điểm trung bình</th><th>{{ '%.2f' % gpa }}</th></tr>
+  </table>
+  <p style="margin-top:1rem">
+    Học bổng khuyến khích:
+    {% if scholarship %}<span class="pill yes">✔ Đủ điều kiện</span>{% else %}<span class="pill no">Chưa đủ điều kiện (cần ≥ 8.5)</span>{% endif %}
+  </p>
+</div>
+{% endblock %}
